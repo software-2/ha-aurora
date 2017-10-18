@@ -43,16 +43,28 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 # And switch to kelvin
 def brightness_scale_nanoleaf_to_hass(range_value):
     # Hass uses 0-255, Aurora uses 0-100
+    if range_value is None:
+        _LOGGER.error("Nanoleaf: brightness_scale_nanoleaf_to_hass() got 'None'...using default value 0")
+        return 0
     return range_value * 2.55
 
 def brightness_scale_hass_to_nanoleaf(range_value):
+    if range_value is None:
+        _LOGGER.error("Nanoleaf: brightness_scale_hass_to_nanoleaf() got 'None'...using default value 0")
+        return 0
     return int(range_value / 2.55)
 
 def color_temp_scale_nanoleaf_to_hass(range_value):
     # Hass uses 154-500, Aurora uses 1200-6500
+    if range_value is None:
+        _LOGGER.error("color_temp_scale_nanoleaf_to_hass() got 'None'...using default value 154")
+        return 154
     return ((range_value - 1200) / 5300) * 346 + 154
 
 def color_temp_scale_hass_to_nanoleaf(range_value):
+    if range_value is None:
+        _LOGGER.error("Nanoleaf: color_temp_scale_hass_to_nanoleaf() got 'None'...using default value 1200")
+        return 1200
     return int(((range_value - 154) / 346) * 5300 + 1200)
 
 class AuroraLight(Light):
