@@ -50,10 +50,12 @@ def brightness_scale_hass_to_nanoleaf(range_value):
 
 def color_temp_scale_nanoleaf_to_hass(range_value):
     # Hass uses 154-500, Aurora uses 1200-6500
-    return ((range_value - 1200) / 5300) * 346 + 154
+    orig_value = ((range_value - 1200) / 5300) * 346 + 154
+    return 500+154 - orig_value
 
 def color_temp_scale_hass_to_nanoleaf(range_value):
-    return int(((range_value - 154) / 346) * 5300 + 1200)
+    orig_value = int(((range_value - 154) / 346) * 5300 + 1200)
+    return 6500+1200 - orig_value
 
 class AuroraLight(Light):
     """Representation of a Nanoleaf Aurora inside Home Assistant."""
@@ -148,5 +150,4 @@ class AuroraLight(Light):
         self._effects_list = self._light.effects_list
         self._color_temp = color_temp_scale_nanoleaf_to_hass(self._light.color_temperature)
         self._rgb_color = self._rgb_color
-
 
