@@ -1,4 +1,3 @@
-from nanoleaf import Aurora
 import logging
 import voluptuous as vol
 
@@ -25,6 +24,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
+    from nanoleaf import Aurora
     host = config.get(CONF_HOST)
     apikey = config.get(CONF_API_KEY)
     name = config.get(CONF_NAME)
