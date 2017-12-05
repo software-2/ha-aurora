@@ -75,6 +75,11 @@ class AuroraLight(Light):
         return self._name
 
     @property
+    def icon(self):
+        """Return the icon to use in the frontend, if any."""
+        return "mdi:vector-triangle"
+
+    @property
     def brightness(self):
         """Return the brightness of the light."""
         return self._brightness
