@@ -12,7 +12,7 @@ import homeassistant.helpers.config_validation as cv
 
 REQUIREMENTS = ['nanoleaf==0.4.0']
 
-SUPPORT_AURORA = ( SUPPORT_BRIGHTNESS | SUPPORT_COLOR_TEMP )
+SUPPORT_AURORA = ( SUPPORT_BRIGHTNESS | SUPPORT_COLOR_TEMP | SUPPORT_RGB_COLOR )
 
 
 _LOGGER = logging.getLogger(__name__)
